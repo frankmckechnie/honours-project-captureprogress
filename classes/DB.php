@@ -53,22 +53,61 @@ class DB {
 			$value 		= $where[2];
 
 			if(in_array($operator, $operators)){
-				$sql = "{$action} * FROM {$table} WHERE {$field} ";
+				$sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
+				if(!$this->query($sql, array($value))->error()){
+					return $this;
+				}
 			}
 		}
+		return false;
 	}
-	
-	public function get($table, $where){
 
+	public function get($table, $where){
+		return $this->action('SELECT *', $table, $where);
 	}
 
 	public function delete($table, $where){
-
+		return $this->action('DELETE', $table, $where);
 	}
 
+	public function insert($table, $fields = array()){
+		if(count($fields)){
+			$keys = array_keys($fields);
+			$values = '';
+			$x = 1;
+
+			foreach ($fields as $field ) {
+				$values .= '?';
+				if($x < count($fields)){
+					$values .= ', ';
+				}
+				$x++;
+			}
+
+			$sql = "INSERT INTO users (`". implode('`,`',$keys) ."`) VALUES ({$values})";
+
+			if(!$this->query($sql, $fields)->error()){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public function results(){
+		return $this->_results;
+	}
+
+	public function first(){
+		return $this->results()[0];
+		// $this->_results; could be used to collect anything by -> username, post id 
+	}
 
 	public function error(){
 		return $this->_error;
+	}
+
+	public function count(){
+		return $this->_count;
 	}
 }
 

@@ -1,11 +1,10 @@
 <?php
 require_once 'core/init.php';
 
-$user = DB::getInstance()->query("SELECT username FROM users WHERE username = ?", array('alex'));
+$user = DB::getInstance()->insert('users', array(
+	'username' => 'Dale',
+	'password' => 'password',
+	'salt' => 'salt',
+));
 
 
-if ($user->error()){
-	echo 'no users';
-}else{
-	echo 'ok!';
-}
