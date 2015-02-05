@@ -7,6 +7,7 @@ require_once 'core/init.php';
 if(Input::exists()){
 	if(Token::check(Input::get('token'))){
 		$validate = new Validate();
+		$salt = Hash::salt(32);
 		$validation = $validate->check($_POST, array(
 			'username' => array(
 				'required' => true,
@@ -37,12 +38,12 @@ if(Input::exists()){
 				echo "$error<br>";
 				try {
 					$User::create(array(
-						'username' => '',
-						'password' => '',
-						'salt' => '',
-						'name' => '',
-						'joined' => '',
-						'group' => ''
+						'username' => Input::get('username'),
+						'password' => Hash::make(Input::get('password'), $salt),
+						'salt' => $salt,
+						'name' => Input::get('name'),
+						'joined' => date('Y-m-d H:i:s'),
+						'group' => 1
 
 					));
 

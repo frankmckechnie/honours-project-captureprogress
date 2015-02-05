@@ -1,9 +1,9 @@
 <?php
-class User(){
+class User {
 	private $_db;
 
 	public function __construct($user = null){
-		$rhis->_db = DB::getInstance();
+		$this->_db = DB::getInstance();
 	}
 
 	public function create($fields = array()){
