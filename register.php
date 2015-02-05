@@ -1,15 +1,66 @@
 <?php
 require_once 'core/init.php';
 
+
+
+
 if(Input::exists()){
-	echo 'submitted';
+	if(Token::check(Input::get('token'))){
+		$validate = new Validate();
+		$validation = $validate->check($_POST, array(
+			'username' => array(
+				'required' => true,
+				'min' => 2,
+				'max' => 20,
+				'unique' => 'users'
+			),
+			'password' => array(
+				'required' => true,
+				'min' => 6
+			),
+			'password_again' => array(
+				'required' => true,
+				'matches' => 'password'
+
+			),
+			'name' => array(
+				'required' => true,
+				'min' => 2,
+				'max' => 50
+			)
+		));
+
+		if($validation->passed()){
+			$user = new User();
+		}else{
+			foreach ($validation->errors() as $error) {
+				echo "$error<br>";
+				try {
+					$User::create(array(
+						'username' => '',
+						'password' => '',
+						'salt' => '',
+						'name' => '',
+						'joined' => '',
+						'group' => ''
+
+					));
+
+				} catch(Exception $e){
+					die($e->getMessage());
+				}
+			}
+			
+		}
+	}
 }
+
 ?>
 
 <form action="" method="post">
 	<div class="field">
 		<label for="username">username</label>
-		<input type="text" name="username" id="username" value="" autocomplete="off">
+		<input type="text" name="username" id="username" value="<?php echo escape(Input::get('username')); ?>" autocomplete="off">
 	</div>
 
 	<div class="field">
@@ -24,9 +75,9 @@ if(Input::exists()){
 
 	<div class="field">
 		<label for="name">Enter your name</label>
-		<input type="password" value="" name="name" id="name">
+		<input type="text" value="<?php echo escape(Input::get('name')); ?>" name="name" id="name">
 	</div>	
-
+	<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" >
 	<input type="submit" value="register">
 </form>
 
