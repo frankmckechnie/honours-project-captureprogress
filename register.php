@@ -1,9 +1,6 @@
 <?php
 require_once 'core/init.php';
 
-
-
-
 if(Input::exists()){
 	if(Token::check(Input::get('token'))){
 		$validate = new Validate();
@@ -34,9 +31,9 @@ if(Input::exists()){
 			$user = new User();
 
 			$salt = Hash::salt(32);
-			
+
 			try {
-				$user::create(array(
+				$user->create(array(
 					'username' => Input::get('username'),
 					'password' => Hash::make(Input::get('password'), $salt),
 					'salt' => $salt,
@@ -44,6 +41,9 @@ if(Input::exists()){
 					'joined' => date('Y-m-d H:i:s'),
 					'group' => 1
 				));
+
+				Session::flash('home', 'you have been registered and now can log in!');
+				Redirect::to('index.php');
 
 			} catch(Exception $e){
 				die($e->getMessage());
