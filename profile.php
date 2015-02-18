@@ -12,7 +12,12 @@ if(!$username = Input::get('user')){
 	}
 	?>
 
-	<h3><?php echo escape($data->username);  ?></h3>
+	<h3>
+	<img src="<?php echo escape($data->picture);  ?>">
+		<?php echo escape($data->username);  ?>
+	</h3>
+	<h4>Gender = <?php echo escape($data->gender);  ?></h4>
 	<p>FullName:<?php echo escape($data->name);  ?></p>
+	<p>My Summary:<?php echo escape($data->summary);  ?></p>
 <?php
 }

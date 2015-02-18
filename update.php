@@ -14,16 +14,31 @@ if(Input::exists()){
 		$validation = $validate->check($_POST, array(
 			'name' => array(
 				'required' => true,
-				'min' => 2,
+				'min' => 6,
 				'max' => 50
+				),
+			'email' => array(
+				'required' => true,
+				'min' => 5,
+				'max' => 30
+				),
+			'summary' => array(
+				'required' => true,
+				'max' => 30
+				),
+			'gender' => array(
+				'required' => true,
+				'max' => 1
 				)
-
 		));
 
 		if($validation->passed()){
 			try {
 				$user->update(array(
-					'name' => Input::get('name')
+					'name' => Input::get('name'),
+					'email' => Input::get('email'),
+					'summary' => Input::get('summary'),
+					'gender' => Input::get('gender')
 				));
 
 				Session::flash('home', 'your details have been updated.');
@@ -32,8 +47,8 @@ if(Input::exists()){
 				die($e->getMessage());
 			}
 		}else{
-			foreach ($errors as $error) {
-				echo $error, '<br>';
+			foreach ($validation->errors() as $error) {
+				echo "$error<br>";
 			}
 		}
 	}
@@ -42,10 +57,19 @@ if(Input::exists()){
 
 <form action="" method="post">
 	<div class="field">
-	<label for="name">Name</label>
-	<input type="text" name="name" value="<?php echo escape($user->data()->name); ?>" >
-	
-	<input type="submit" value="Update">
-	<input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+		<label for="name">Name</label>
+		<input type="text" name="name" value="<?php echo escape($user->data()->name); ?>" >
+		<br>
+		<label for="email">Email</label>
+		<input type="text" name="email" value="<?php echo escape($user->data()->email); ?>" >
+		<br>
+		<label for="summary">summary</label>
+		<textarea name="summary" id="summary" cols="30" rows="5"><?php echo escape($user->data()->summary); ?></textarea>
+		<br>
+		<label for="gender">gender</label>
+		<input type="text" name="gender" value="<?php echo escape($user->data()->gender); ?>" >
+		<br>		
+		<input type="submit" value="Update">
+		<input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 	</div>
 </form>
