@@ -1,5 +1,5 @@
 <h1> The Post Page</h1>
-
+ 
 <?php 
 require_once 'core/init.php';
 

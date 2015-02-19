@@ -19,5 +19,7 @@ if(!$username = Input::get('user')){
 	<h4>Gender = <?php echo escape($data->gender);  ?></h4>
 	<p>FullName:<?php echo escape($data->name);  ?></p>
 	<p>My Summary:<?php echo escape($data->summary);  ?></p>
+
+	
 <?php
 }
