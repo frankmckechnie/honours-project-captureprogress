@@ -13,7 +13,7 @@ if(!$username = Input::get('user')){
 	?>
 
 	<h3>
-	<img src="<?php echo escape($data->picture);  ?>">
+	<img src="<?php echo escape($data->picture);  ?>" width="150" height="150">
 		<?php echo escape($data->username);  ?>
 	</h3>
 	<h4>Gender = <?php echo escape($data->gender);  ?></h4>

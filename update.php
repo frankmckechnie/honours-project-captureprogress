@@ -32,17 +32,65 @@ if(Input::exists()){
 				)
 		));
 
+		$target_dir = "images/profile/";
+		$ext = basename( $_FILES["fileToUpload"]["name"]);
+		$ext = explode("." ,$ext);
+		$target_file = $target_dir . $user->data()->id . "-" . $user->data()->username . "." . end($ext);
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		$uploadOk = 1;
+		
+		// Check if image file is a actual image or fake image
+		if(isset($_POST["fileToUpload"])) {
+		    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+		    if($check !== false) {
+		        echo "File is an image - " . $check["mime"] . ".";
+		        $uploadOk = 1;
+		    } else {
+		        echo "File is not an image.";
+		        $uploadOk = 0;
+		    }
+		}
+		// Check if file already exists
+		// if (file_exists($target_file)) {
+		//     echo "Sorry, file already exists.";
+		//     $uploadOk = 0;
+		// }
+		// Check file size
+		if ($_FILES["fileToUpload"]["size"] > 500000) {
+		    echo "Sorry, your file is too large.";
+		    $uploadOk = 0;
+		}
+		// Allow certain file formats
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+		&& $imageFileType != "gif" ) {
+		    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+		    $uploadOk = 0;
+		}
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+		    echo "Sorry, your file was not uploaded.";
+		// if everything is ok, try to upload file
+		} else {
+		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+		        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+		    } else {
+		        echo "Sorry, there was an error uploading your file.";
+		    }
+		}
+
 		if($validation->passed()){
 			try {
 				$user->update(array(
 					'name' => Input::get('name'),
 					'email' => Input::get('email'),
 					'summary' => Input::get('summary'),
-					'gender' => Input::get('gender')
+					'gender' => Input::get('gender'),
+					'picture' => $target_file
+
 				));
 
 				Session::flash('home', 'your details have been updated.');
-				Redirect::to('index.php');
+				//Redirect::to('index.php');
 			} catch (Exception $e) {
 				die($e->getMessage());
 			}
@@ -55,7 +103,7 @@ if(Input::exists()){
 }
 ?>
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
 	<div class="field">
 		<label for="name">Name</label>
 		<input type="text" name="name" value="<?php echo escape($user->data()->name); ?>" >
@@ -68,8 +116,15 @@ if(Input::exists()){
 		<br>
 		<label for="gender">gender</label>
 		<input type="text" name="gender" value="<?php echo escape($user->data()->gender); ?>" >
-		<br>		
-		<input type="submit" value="Update">
+		<br>	
+		<label for="remember">
+			<input type="checkbox" name="male" id="male" > male
+			<input type="checkbox" name="female" id="female" > female
+		</label>
+		<br>
+		Select image to upload:
+   		<input type="file" name="fileToUpload" id="fileToUpload">
+		<input type="submit" name="submit" value="Update">
 		<input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 	</div>
 </form>

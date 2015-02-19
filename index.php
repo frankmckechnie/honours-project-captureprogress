@@ -14,6 +14,7 @@ if($user->isLoggedIn()){
 		<li><a href="logout.php">Log Out</a></li>
 		<li><a href="update.php">Update Details</a></li>
 		<li><a href="changepassword.php">Change Password</a></li>
+		<li><a href="posts.php">posts</a></li>
 	</ul>
 
 <?php
