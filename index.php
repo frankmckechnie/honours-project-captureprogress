@@ -7,6 +7,9 @@ if (Session::exists('home')){
 
 $user = new User();
 if($user->isLoggedIn()){
+
+$posts = DB::getInstance()->get('posts', array('userID', '=',$user->data()->id ));
+
 ?>
 	<p>hello <a href="profile.php?user=<?php echo escape($user->data()->username); ?>"><?php echo escape($user->data()->username); ?></a>!</p>
 
@@ -16,8 +19,27 @@ if($user->isLoggedIn()){
 		<li><a href="changepassword.php">Change Password</a></li>
 		<li><a href="posts.php">posts</a></li>
 	</ul>
+	
+	<h2>My Posts</h2>
+<?php 
 
+	if (!$posts->count()){
+		echo 'no posts';
+	}else{
+		echo "<ul>";
+		foreach ($posts->results() as $post) {
+?>
+			<li>
+				<a href="viewPost.php?post=<?php echo escape($post->id); ?>"><?php echo escape($post->title); ?></a>
+				<?php echo escape($post->timeStamp); ?>
+				<br> By <a href="profile.php?user=<?php echo escape($post->username); ?>"><?php echo escape($post->username); ?></a>
+				Gender = <?php echo escape($post->gender);  ?>
+			</li>
 <?php
+		}
+		echo "</ul>";
+
+	}
 
 	if($user->hasPermission('admin')){
 		echo "you have admin";
