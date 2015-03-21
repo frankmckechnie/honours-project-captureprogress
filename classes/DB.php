@@ -22,7 +22,7 @@ class DB {
 		return self::$_instance;
 	}
 
-	public function query($sql, $params = array()){
+	public function query($sql, $params = array()){ 
 		$this->_error = false;
 		if($this->_query = $this->_pdo->prepare($sql)){
 			$x = 1;
@@ -32,7 +32,7 @@ class DB {
 					$x++;
 				}
 			}
-
+			//print_r($this->_query);
 			if($this->_query->execute()){
 				$this->_results = $this->_query->fetchALL(PDO::FETCH_OBJ);
 				$this->_count = $this->_query->rowCount();
@@ -53,7 +53,7 @@ class DB {
 			$value 		= $where[2];
 
 			if(in_array($operator, $operators)){
-				$sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
+				$sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?"; 
 				if(!$this->query($sql, array($value))->error()){
 					return $this;
 				}
@@ -111,7 +111,9 @@ class DB {
 		}
 		return false;
 	}
+	public function like(){
 
+	}
 
 	public function results(){
 		return $this->_results;
