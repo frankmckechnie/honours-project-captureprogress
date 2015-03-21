@@ -1,32 +1,4 @@
-<?php 
-require_once 'core/init.php';
-include 'includes/header.php';
-$user = new User();
-$data = $user->data();
-if(!$user->isLoggedIn()){
-	Redirect::to('index.php');
-	exit("you are not logged in");
-}
-
-include 'includes/nav.php';
-?>
-
-<div id="orderby">Filter
-		<a class="change" data-order="like_count" href="#">Most Popular</a>
-		<a class="change" data-order="id" href="#">Oldest</a>
-		<a class="change" data-order="timeStamp" href="#">Most Recent</a>
-</div>
-
-<?php
-
-$posts = DB::getInstance()->query("SELECT * FROM posts WHERE public = ? ORDER BY like_count DESC LIMIT 10", array(1)); 
-$results = $posts->results();
-
-if (!$posts->count()){ // row count 
-	echo 'no posts';
-}else{
-	echo "<h1> The Post Page</h1>";
-	echo "<ul id='posts'>";
+	echo "<ul class='load_content' id='posts'>";
 	foreach ($results as $post) {
 		$like = DB::getInstance()->query("SELECT * FROM likes WHERE postID = ? AND userID = ?", array($post->id, $data->id))->results(); 
 		if (!$like[0]->userID == $data->id){
@@ -36,11 +8,10 @@ if (!$posts->count()){ // row count
 			$vote = "down";
 			$image = "background-image: url('images/down.png')";
 		}
-		$images = DB::getInstance()->get('images', array('postID', '=', $post->id))->results();
+		$id = $post->id;
+		$likeCount = $post->like_count;
 ?>
-
 		<li>
-			<img  src="images/photos/small-<?php echo $images[0]->filePath; ?>">
 			<a href="viewPost.php?post=<?php echo escape($post->id); ?>"><?php echo escape($post->title); ?></a>
 			<?php echo escape($post->timeStamp); ?>
 			<br> By <a href="profile.php?user=<?php echo escape($post->username); ?>"><?php echo escape($post->username); ?></a>
@@ -49,15 +20,33 @@ if (!$posts->count()){ // row count
 		</li>
 <?php
 	}
+
+	echo "<div class='button_container'><div class='button dark' data-like='$likeCount' id='loadMore' data-post='$id'>Load More</div></div>";
 	echo "</ul>";
 	echo "<div id='result'></div>";
 }
-
-if (Session::exists('postProb')){
-	echo '<p>' . Session::flash('postProb') . '</p>';
-}
-
 ?>
+<script>
 
-</body>
-</html>
+	$(document).on("click",".button_container div",function() {
+		var postid = $(this).data('post');
+		var likeCount = $(this).data('like');
+		$.ajax({
+			url: "loadMore.php", // Url to which the request is send
+			type: "Post",             // Type of request to be send, called as method
+			data: { post: postid, likeCount: likeCount }, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+			success: function(data) {  // A function to be called if request succeeds
+				if(data.indexOf("END") > -1){
+					console.log(data);
+					$("#loadValue").html("No More Content");
+				}
+				$(".button_container").remove();
+				$(".load_content").append(data);
+				bindThis();
+			},
+			error: function(data){
+				$("#result").html(data);
+			}
+		});	
+	});
+</script>

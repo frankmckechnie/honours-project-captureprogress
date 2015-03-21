@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* `Basic HTML
+----------------------------------------------------------------------------------------------------*/
+html, html a,p,h1,h2,h3 {
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.005);
+	-webkit-font-smoothing: antialiased;
+
+}
+body {
+	background-color: #fff;
+	font-family: "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
+	font-size:100%;
+	line-height: 1.5;
+	margin: 10px;
+	padding: 10px;
+	min-width:960px;	
+}
+.upVote{
+	color:#2c3e50;
+	width: 75px;
+	background-repeat: no-repeat;
+    background-position: right;
+    background-size: 20px;
+
+}
+.upVote:hover{
+	color: #2980b9;
+	cursor:pointer;
+}
+.button {
+  border: 0 none;
+  border-radius: 2px 2px 2px 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 20px;
+  margin-bottom: 0;
+  margin-top: 10px;
+  padding: 7px 10px;
+  text-transform: none;
+  transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  width: 16.795%;
+  /* auto */
+  text-align: center;
+  /* DELETE WHEN WIDTH AUTO */
+}
+.button.dark {
+  background: none repeat scroll 0 0 #444444;
+  color: #FFFFFF;
+}
+.button.dark:hover {
+  background: none repeat scroll 0 0 #2DB6CF;
+  color: #FFFFFF;
+}

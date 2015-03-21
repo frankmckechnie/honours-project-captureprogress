@@ -33,13 +33,17 @@ if(Input::exists()){
 			$salt = Hash::salt(32);
 
 			try {
-				$user->create(array(
+				$user->create('acount','users',array(
 					'username' => Input::get('username'),
 					'password' => Hash::make(Input::get('password'), $salt),
 					'salt' => $salt,
+					'email' => Input::get('email'),
 					'name' => Input::get('name'),
 					'joined' => date('Y-m-d H:i:s'),
-					'group' => 1
+					'group' => 1,
+					'gender' => Input::get('sex'),	
+					'summary' => 'Hey I am Name, this is my summary talking about why I am here and what I hope to acomplish.',	
+					'picture' => 'images/profile/default-profile-pic.png',				
 				));
 
 				Session::flash('home', 'you have been registered and now can log in!');
@@ -67,6 +71,11 @@ if(Input::exists()){
 	</div>
 
 	<div class="field">
+		<label for="email">Enter your a email</label>
+		<input type="email" value="<?php echo escape(Input::get('email')); ?>" name="email" id="email">
+	</div>
+
+	<div class="field">
 		<label for="password">choose a password</label>
 		<input type="password" name="password" id="password">
 	</div>
@@ -79,7 +88,13 @@ if(Input::exists()){
 	<div class="field">
 		<label for="name">Enter your name</label>
 		<input type="text" value="<?php echo escape(Input::get('name')); ?>" name="name" id="name">
+	</div>		
+
+	<div class="field">
+		<label for="sex">Male or Female</label>
+		<input type="sex" value="<?php echo escape(Input::get('sex')); ?>" name="sex" id="sex">
 	</div>	
+
 	<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" >
 	<input type="submit" value="register">
 </form>
