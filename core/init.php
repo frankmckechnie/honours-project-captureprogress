@@ -5,9 +5,9 @@ session_start();
 $GLOBALS['config'] = array(
     'mysql' => array(
         'host' => '127.0.0.1',
-        'username' => 'webfrank_app',
-        'password' => '23h3ui2he',
-        'db' => 'webfrank_application'
+        'username' => 'root',
+        'password' => '',
+        'db' => 'application'
     ),
     'remember' => array(
         'cookie_name' => 'hash',
