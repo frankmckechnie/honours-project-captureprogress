@@ -23,6 +23,7 @@ class DB {
 	}
 
 	public function query($sql, $params = array()){ 
+		$this->_pdo->setAttribute( PDO::ATTR_EMULATE_PREPARES, false );
 		$this->_error = false;
 		if($this->_query = $this->_pdo->prepare($sql)){
 			$x = 1;
@@ -32,6 +33,7 @@ class DB {
 					$x++;
 				}
 			}
+			//or die(print_r($this->_query->errorInfo()))
 			//print_r($this->_query);
 			if($this->_query->execute()){
 				$this->_results = $this->_query->fetchALL(PDO::FETCH_OBJ);
@@ -111,9 +113,7 @@ class DB {
 		}
 		return false;
 	}
-	public function like(){
 
-	}
 
 	public function results(){
 		return $this->_results;

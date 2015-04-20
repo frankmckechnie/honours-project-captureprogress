@@ -1,0 +1,174 @@
+#container{
+   position: absolute;
+   top: 25%;
+   left: 0;
+   width: 100%;
+}
+#regContain{
+   position: absolute;
+   top: 10%;
+   left: 0;
+   width: 100%;
+   padding-bottom: 30px;
+}
+.flatStyle{
+	width: 100%;
+	height: ;
+}
+textarea {
+    width: 100%;
+    height: 150px;
+    line-height: 150%;
+    resize:vertical;
+}
+.form-main {
+	background-color: #fff;
+	width: 460px;
+	padding: 0px 0px 0px 0px;
+  	margin: auto;
+}
+.form-div {
+	overflow: auto;
+	background-color: #fff;
+	padding: 30px 20px 30px 20px;
+}
+.form-div-two{
+	overflow: auto;
+	background-color: #fff;
+	padding: 10px 20px 10px 20px;
+}
+.loginBar{
+	width:100%;
+	height: 44px;
+	background: #2e3e50;
+	text-align: center;
+	color:#fff;
+	font-size: 16pt;
+	font-weight: bold;
+	line-height: 26px;
+	margin: 0;
+	padding: 16px 0px 0px 0px;
+}
+.feedback-input {
+	color: #7c7c7c;
+    font-weight:500;
+	font-size: 18px;
+	border-radius: 0;
+	line-height: 22px;
+	background-color: #d9d9d9 ;
+	padding: 13px 54px 13px 13px;
+	margin-bottom: 20px;
+	width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+    border: 3px solid rgba(0,0,0,0);
+    background-repeat: no-repea
+}
+.feedback-input:focus{
+	background: #fff;
+	box-shadow: 0;
+	border: 3px solid #1a9e85;
+	color: #1a9e85;
+	outline: none;
+  	padding: 13px 54px 13px 13px;
+}
+.name,.password,.email,.image{
+	background-position: right !important;
+	background-repeat: no-repeat  !important;
+}
+
+.name{
+	background-image: url(icons/name.png);
+}
+.name:focus{
+	background-image: url(icons/nameFocus.png);
+}
+.password{
+	background-image: url(icons/password.png);
+}
+.password:focus{
+	background-image: url(icons/passwordFocus.png);
+}
+.password{
+	background-image: url(icons/password.png);
+}
+.password:focus{
+	background-image: url(icons/passwordFocus.png);
+}
+.email{
+	background-image: url(icons/email.png);
+}
+.email:focus{
+	background-image: url(icons/emailFocus.png);
+}.image{
+	background-image: url(icons/image.png);
+}
+.image:focus{
+	background-image: url(icons/imageFocus.png);
+}
+.summary{
+	background-position: top right !important;
+	background-repeat: no-repeat !important;
+	background-image: url(icons/summary.png);
+}
+.summary:focus{
+	background-image: url(icons/summaryFocus.png);
+}
+.remember{
+	color: #1a9e85;
+	width: 100%;
+	padding-bottom: 10px;
+}
+.button{
+  float: right; 
+  font-family: 'Lato', sans-serif;
+  border: 0;
+  width: 209px !important;
+  font-weight: normal;
+  text-decoration: none;
+  cursor:pointer;
+  color: #fff;
+  padding: 10px 0px 10px 0px;
+  margin: 0px;
+  font-size: 14pt !important;
+  font-weight: bold;
+  line-height: 16pt;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 20px;
+}
+.longButton{
+  float: right; 
+  font-family: 'Lato', sans-serif;
+  border: 0;
+  width: 100% !important;
+  font-weight: normal;
+  text-decoration: none;
+  cursor:pointer;
+  color: #fff;
+  padding: 10px 0px 10px 0px;
+  margin: 0px;
+  font-size: 14pt !important;
+  font-weight: bold;
+  line-height: 16pt;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box
+  box-sizing: border-box;
+  text-align: center;
+}
+.mLeft{
+	float:left;
+}
+.formLable{
+	float:left;
+	line-height: 16pt;
+	font-size: 14pt;
+	margin: 0px 5px 5px 0px ;	
+	padding: 0px 0px 5px 0px ;	
+}

@@ -1,0 +1,809 @@
+
+@media screen and (max-device-width: 751px), screen and (max-width: 751px) {
+
+
+}
+/*- MEDIA QUERY  layouts smaller than 750px and mobiles 
+----------------------------------------------------------------------*/
+
+@media screen and (max-device-width: 750px), screen and (max-width: 750px) {
+	/* Styles */
+	body {
+		min-width: 480px;
+		word-wrap: break-word;
+	}
+	/* Styles */
+
+	h1 {
+	  font-size: 14pt;
+	  font-weight: bold;
+	  line-height: 15px;
+	  padding: 14px 0px 0px 19px;
+	}
+	h2 {
+	  font-size: 14pt;
+	}
+	h4 {
+	  font-size: 16pt;
+	  padding: 16px 0px 0px 19px;
+	}
+	.header {
+	  height: 50px;
+	  margin-bottom:0px;
+	}
+	.headerCenter {
+	  width: 95%;
+	  height: 42px;
+	}
+	.logo{
+	  width: 243px;
+	  height: 50px;
+	  float: left;
+	  background: url("assets/logo.svg") no-repeat left top;
+	  background-size: contain;
+	}
+	.nav {
+		display: none;
+	}
+	#activate{
+		display:block !important;
+		width: 50px;
+		height: 50px;
+		float:right;
+	}
+	
+	.uiButton {
+	    background-color: ;
+		background-image: url(icons/mobileIcon.png);
+	}
+	.uiButton:active {
+	    background-color:#53657a;	
+		background-image: url(icons/mobileIcontwo.png);
+
+	}
+	.uiButtonActive {
+	    background-color:#53657a;
+		background-image: url(icons/mobileIcontwo.png);
+	}
+	#mnav{
+		background-color: #53657a;
+		width: 100%;
+		margin: 0px 0px 10px 0px ;
+		float:right;
+		padding: 10px 5% 15px 5%;
+		display: none;
+		-webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box
+	    box-sizing: border-box;
+	}
+	#mnav li {
+		margin: 5px 0px !important;
+		padding: 10px 0px 10px 2%;
+		width: 98%;
+		list-style:none;	
+	}
+	
+	#mnav a{
+	   background-size: 16px !important;
+ 	   padding-left: 20px !important;
+ 	   background: no-repeat left;
+	   text-decoration: none;
+	   color: #fff;
+	   font-weight:normal;
+	   font-size: 12pt;
+	}
+	.user:hover { background-image: url(icons/user.svg) !important; }
+	.home:hover { background-image: url(icons/home.svg)!important; }
+	.settings:hover  { background-image: url(icons/settings.svg)!important; }
+	.posts:hover  { background-image: url(icons/posts.svg)!important; }
+	#mnav li:hover{
+		background-color: #1a9e85;
+	}
+	.extraSpace{
+		float:left;
+		width:100%;
+		height:20px;
+	}
+	
+	#mnav h2:hover{
+		color: #fff;
+	}
+	.userImg{ /*nav image*/
+	    float:left;
+	    width: 30px;
+	    height: 30px;
+	    margin-left: -5px;
+	    margin-top: -8px;
+	}
+	.content {
+	  width: 100%;
+	  float: left;
+	}
+	.contentCenter {
+	  width: 95%;
+	  padding: 0px 0px 20px 0px;
+	}
+	.bar {
+	  height: 42px;
+	  width: 100%;
+	  margin-bottom: 10px;
+	  clear: both;
+	}
+	.mainButton{
+	  display:none;
+	  width: 60px;
+	  height: 10px;
+	  float: right;
+	  padding: 0px 0px 10px 10px;
+	  font-size: 12pt;
+	  font-weight: bold;
+	  text-decoration: none;
+	  cursor:pointer;
+	}
+	.barButton{
+	  width: 97px;
+	  height: 28px;
+	  float: right;
+	  padding: 14px 0px 0px 35px;
+	  line-height: 15px;
+	  font-weight: bold;
+	  text-decoration: none;
+	  cursor:pointer;
+	}
+	.list{
+	   float:left;
+	   width: calc(100% - 40px);
+	   background: #fff;
+	   padding: 0px 0px 5px 0px;
+	   margin: 10px 0px 0px 0px;
+	}
+	.private{
+		display:none;
+	}
+	.extraLine{width: calc(100% - 80px) !important}
+	.extraWidth{width: calc(100% - 40px) !important;}
+	.list:hover{background: #f4f0f0;}
+	.list:hover + .vote { background: #f4f0f0;}
+	.listImage{
+	  float:left;
+	  width:60px;
+	  height:60px;
+	  background: #fff;
+	  margin-right: 10px;
+	}
+	.titleHolder{  
+	  width: calc(100% - 70px);
+	  font-size: 12pt;
+	  padding: 5px 0px 0px 0px;
+	 }
+	.overide{
+		padding-bottom: 15px;
+		width: 100% !important;
+	}
+	.line{
+	  width: calc(100% - 70px);
+	}
+	.timeHolder{  
+	  width: calc(100% - 70px);
+	  float:left;
+	  font-size: 10pt;
+	  line-height: 12pt;
+	  color: #58585d !important;
+	  padding:3px 0px 10px 0px;
+	  background: ;
+	}
+	.mSettings{
+		display: inline !important;
+		background: #2e3e50 no-repeat url('icons/mSettings.svg') center;
+		background-size: contain;
+		float:left;
+		width: 100%;
+		padding: 10px 0px 10px 0px ;
+		margin: 0px 0px 0px 0px;
+	}
+	.menuSet{
+		text-align: center;
+		background: #fff;
+		width: 100%;
+		width: 100%;
+		padding: 0px 0px;
+		margin: 0px 0px 0px 0px;
+		cursor: pointer;
+	}
+	.subBut{
+		float:left;
+		width:50%;
+		margin:0px;
+		padding:5px 0px;
+	}
+	.vote{
+	  width:40px;
+	  min-height:65px;
+	  margin: 10px 0px 0px 0px;
+	}
+	.unVote{
+	    margin: 0px;
+	}
+
+	.goalLine{
+	  width: 100% !important;
+	}
+	.goalList{
+		 min-height: 80px;
+	     width: calc(100% - 75px) !important;
+	     padding: 0px 0px 0px 10px !important;
+	}
+	
+	#goalForm{
+	    width: 70%;
+	    margin: -5% auto 0 -37%;
+	}
+	.x{
+	  background: #fff no-repeat url('icons/x.png') center;
+	  width: 30px;
+	  height: 80px;
+	  float: left;
+	  margin-top: 10px;
+	  background-size:30px;
+	}
+	.tick{
+	  background: #fff no-repeat url('icons/tick.png') center;
+	  width: 30px;
+	  height: 80px;
+	  float: right;
+	  margin-top: 10px;
+	  background-size:30px;
+	}
+	.tick:hover, .x:hover,.tick:active, .x:active{ background-size:40px}
+	.compbar{
+	  height: 56px;
+	  width: 100%;
+	  clear: both;
+	}
+
+	.completedGoals{
+	  float: left;
+	  clear:  both;
+	  width: 100%;
+	  background: #fff;
+	  margin: 0px 0px 0px 0px;
+	}
+	.compRight{
+	  width: calc(100% - 80px);
+	  font-size: 10pt;
+	  padding:10px 0px 0px 20px ;
+	}
+	.compRight span{
+	  font-size: 10pt;
+	}
+	.checkBox{
+	  float:left;
+	  padding:10px 20px;
+	  width: 20px;
+	  height: 20px;
+	}
+	.lastBox{
+	  float:left;
+	  padding:10px 20px;
+	  width: 20px;
+	  height: 10px;
+	}
+
+/*-- profile page --*/
+
+	.left-bar-colum{
+	  width: calc(100% - 40px);
+	}
+	.post-sub {
+	  background-color: #fff;
+	  padding: 0px 20px 0px 20px;
+	}
+
+	.post-image-holder{
+	  width: 95%;
+	  background: #fff;
+	  margin: 20px auto;
+	}
+	/*-- comments--*/
+
+	.comment-contain {
+	  background-color: #1a9e85;
+	  width:100%;
+	  float:left;
+	  color: #58585d; 
+	  padding: 0px 0px 30px 0px;
+	}
+	.comment-center {
+	  width:95%;
+	  margin-right: auto;
+	  margin-left: auto;
+	}
+	.comment-content{
+	    width: 100%;
+	    float: left;
+	    padding: 0px 0px 0px 0px;
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box
+	    box-sizing: border-box;
+	    margin: 10px 0px 0px 0px;
+	}
+	.comment-right{
+	  min-height: 50px;
+	  background-color: #fff;
+	  width: calc(100% - 90px);
+	  float:  right;
+	  padding: 0px 10px 0px 10px;
+	  border-bottom: 2px solid  #166354;
+	}
+	.CommentHolder{
+	  width: 100%;
+	  font-size: 14pt;
+	  float:left;
+	  padding:8px 0px 10px 0px;
+	  background: ;
+	}
+	.commentImage{
+	  float:left;
+	  width:60px;
+	  height:60px;
+	  background: #fff;
+	}
+
+	.commentLoad{
+	    background-image: url('assets/ajax-loader.gif') !important ;
+	    background-repeat: no-repeat !important ;
+	    background-position:  center !important ; 
+	}
+	/*-- profile page --*/
+	.profile-contain{
+	  width:100%;
+	  background: #fff;
+	  overflow: auto;
+	}
+	.profile-Image{
+	  float: left;
+	}
+	.profile-box-right{
+	  width: calc(100% - 40px);
+	  float: left;
+	  padding: 20px;
+	}
+	#container{
+	   position: absolute;
+	   left: 0%;
+	   top: 5%;
+	   width: 100%;
+	}
+	.form-main {
+		width: 95%;
+	}
+	.button{
+	  width: 48% !important;
+	}
+	.mLeft{
+	   float:left;
+	}
+	.loginBar{
+		width:100%;
+		height: 44px;
+		background: #2e3e50;
+		text-align: center;
+		color:#fff;
+		font-size: 14pt;
+		font-weight: bold;
+		line-height: 26px;
+		margin: 0;
+		padding: 16px 0px 0px 0px;
+	}
+
+}
+
+
+/*- MEDIA QUERY  layouts smaller than 480px and mobiles 
+----------------------------------------------------------------------*/
+
+@media screen and (max-device-width: 480px), screen and (max-width: 480px) {  
+
+	/* Styles */
+	body {
+		min-width: 320px;
+		 word-wrap: break-word;
+	}
+	h1 {
+	  font-size: 14pt;
+	  font-weight: bold;
+	  line-height: 15px;
+	  padding: 14px 0px 0px 19px;
+	}
+	h2 {
+	  font-size: 14pt;
+	}
+	h4 {
+	  font-size: 16pt;
+	  padding: 16px 0px 0px 19px;
+	}
+	.header {
+	  height: 50px;
+	  margin-bottom:0px;
+	}
+	.headerCenter {
+	  width: 95%;
+	  height: 42px;
+	}
+	.logo{
+	  width: 243px;
+	  height: 50px;
+	  float: left;
+	  background: url("assets/logo.svg") no-repeat left top;
+	  background-size: contain;
+	}
+	.nav {
+		display: none;
+	}
+	#activate{
+		display:block !important;
+		width: 50px;
+		height: 50px;
+		float:right;
+	}
+	
+	.uiButton {
+	    background-color: ;
+		background-image: url(icons/mobileIcon.png);
+	}
+	.uiButton:active {
+	    background-color:#53657a;	
+		background-image: url(icons/mobileIcontwo.png);
+
+	}
+	.uiButtonActive {
+	    background-color:#53657a;
+		background-image: url(icons/mobileIcontwo.png);
+	}
+	#mnav{
+		background-color: #53657a;
+		width: 100%;
+		margin: 0px 0px 10px 0px ;
+		float:right;
+		padding: 10px 5% 15px 5%;
+		display: none;
+		-webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box
+	    box-sizing: border-box;
+	}
+	#mnav li {
+		margin: 5px 0px !important;
+		padding: 10px 0px 10px 2%;
+		width: 98%;
+		list-style:none;	
+	}
+	
+	#mnav a{
+	   background-size: 16px !important;
+ 	   padding-left: 20px !important;
+ 	   background: no-repeat left;
+	   text-decoration: none;
+	   color: #fff;
+	   font-weight:normal;
+	   font-size: 12pt;
+	}
+	.user:hover { background-image: url(icons/user.svg) !important; }
+	.home:hover { background-image: url(icons/home.svg)!important; }
+	.settings:hover  { background-image: url(icons/settings.svg)!important; }
+	.posts:hover  { background-image: url(icons/posts.svg)!important; }
+	#mnav li:hover{
+		background-color: #1a9e85;
+	}
+	.extraSpace{
+		float:left;
+		width:100%;
+		height:20px;
+	}
+	
+	#mnav h2:hover{
+		color: #fff;
+	}
+	.userImg{ /*nav image*/
+	    float:left;
+	    width: 30px;
+	    height: 30px;
+	    margin-left: -5px;
+	    margin-top: -8px;
+	}
+	.content {
+	  width: 100%;
+	  float: left;
+	}
+	.contentCenter {
+	  width: 95%;
+	  padding: 0px 0px 20px 0px;
+	}
+	.bar {
+	  width: 100%;
+	  margin-bottom: 10px;
+	  clear: both;
+	}
+	.mainButton{
+	  display:none;
+	  width: 60px;
+	  height: 10px;
+	  float: right;
+	  padding: 0px 0px 10px 10px;
+	  font-size: 12pt;
+	  font-weight: bold;
+	  text-decoration: none;
+	  cursor:pointer;
+	}
+	.barButton{
+	  width: 97px;
+	  height: 28px;
+	  float: right;
+	  padding: 14px 0px 0px 35px;
+	  line-height: 15px;
+	  font-weight: bold;
+	  text-decoration: none;
+	  cursor:pointer;
+	}
+	.list{
+	   float:left;
+	   width: calc(100% - 40px);
+	   background: #fff;
+	   padding: 0px 0px 10px 0px;
+	   margin: 10px 0px 0px 0px;
+	}
+	.private{
+		display:none;
+	}
+	.extraLine{width: calc(100% - 80px) !important}
+	.extraWidth{width: calc(100% - 40px) !important;}
+	.list:hover{background: #f4f0f0;}
+	.list:hover + .vote { background: #f4f0f0;}
+	.listImage{
+	  float:left;
+	  width:60px;
+	  height:60px;
+	  background: #fff;
+	  margin-right: 10px;
+	}
+	.titleHolder{  
+	  width: calc(100% - 70px);
+	  font-size: 12pt;
+	  padding: 5px 0px 0px 0px;
+	 }
+	.overide{
+		padding-bottom: 15px;
+		width: 100% !important;
+	}
+	.line{
+	  width: calc(100% - 70px);
+	}
+	.timeHolder{  
+	  width: calc(100% - 70px);
+	  float:left;
+	  font-size: 10pt;
+	  line-height: 12pt;
+	  color: #58585d !important;
+	  padding:3px 0px 10px 0px;
+	  background: ;
+	}
+	.mSettings{
+		display: inline !important;
+		background: #2e3e50 no-repeat url('icons/mSettings.svg') center;
+		background-size: contain;
+		float:left;
+		width: 100%;
+		padding: 10px 0px 10px 0px ;
+		margin: 0px 0px 0px 0px;
+	}
+	.menuSet{
+		text-align: center;
+		background: #fff;
+		width: 100%;
+		width: 100%;
+		padding: 0px 0px;
+		margin: 0px 0px 0px 0px;
+		cursor: pointer;
+	}
+	.subBut{
+		float:left;
+		width:50%;
+		margin:0px;
+		padding:5px 0px;
+	}
+	.vote{
+	  width:40px;
+	  min-height:70px;
+	  margin: 10px 0px 0px 0px;
+	}
+	.unVote{
+	    margin: 0px;
+	}
+
+	.goalLine{
+	  width: 100% !important;
+	}
+	.goalList{
+		 min-height: 80px;
+	     width: calc(100% - 75px) !important;
+	     padding: 0px 0px 0px 10px !important;
+	}
+	
+	#goalForm{
+	    width: 70%;
+	    margin: -5% auto 0 -37%;
+	}
+	.x{
+	  background: #fff no-repeat url('icons/x.png') center;
+	  width: 30px;
+	  height: 80px;
+	  float: left;
+	  margin-top: 10px;
+	  background-size:30px;
+	}
+	.tick{
+	  background: #fff no-repeat url('icons/tick.png') center;
+	  width: 30px;
+	  height: 80px;
+	  float: right;
+	  margin-top: 10px;
+	  background-size:30px;
+	}
+	.tick:hover, .x:hover,.tick:active, .x:active{ background-size:40px}
+	.compbar{
+	  height: 56px;
+	  width: 100%;
+	  clear: both;
+	}
+
+	.completedGoals{
+	  float: left;
+	  clear:  both;
+	  width: 100%;
+	  background: #fff;
+	  margin: 0px 0px 0px 0px;
+	}
+	.compRight{
+	  width: calc(100% - 80px);
+	  font-size: 10pt;
+	  padding:10px 0px 0px 20px ;
+	}
+	.compRight span{
+	  font-size: 10pt;
+	}
+	.checkBox{
+	  float:left;
+	  padding:10px 20px;
+	  width: 20px;
+	  height: 20px;
+	}
+	.lastBox{
+	  float:left;
+	  padding:10px 20px;
+	  width: 20px;
+	  height: 10px;
+	}
+
+/*-- profile page --*/
+
+	.left-bar-colum{
+	  width: calc(100% - 40px);
+	}
+	.post-sub {
+	  background-color: #fff;
+	  padding: 0px 20px 0px 20px;
+	}
+
+	.post-image-holder{
+	  width: 95%;
+	  background: #fff;
+	  margin: 20px auto;
+	}
+	/*-- comments--*/
+
+	.comment-contain {
+	  background-color: #1a9e85;
+	  width:100%;
+	  float:left;
+	  color: #58585d; 
+	  padding: 0px 0px 30px 0px;
+	}
+	.comment-center {
+	  width:95%;
+	  margin-right: auto;
+	  margin-left: auto;
+	}
+	.comment-content{
+	    width: 100%;
+	    float: left;
+	    padding: 0px 0px 0px 0px;
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box
+	    box-sizing: border-box;
+	    margin: 10px 0px 0px 0px;
+	}
+	.comment-right{
+	  min-height: 50px;
+	  background-color: #fff;
+	  width: calc(100% - 90px);
+	  float:  right;
+	  padding: 0px 10px 0px 10px;
+	  border-bottom: 2px solid  #166354;
+	}
+	.CommentHolder{
+	  width: 100%;
+	  font-size: 14pt;
+	  float:left;
+	  padding:8px 0px 10px 0px;
+	  background: ;
+	}
+	.commentImage{
+	  float:left;
+	  width:60px;
+	  height:60px;
+	  background: #fff;
+	}
+
+	.commentLoad{
+	    background-image: url('assets/ajax-loader.gif') !important ;
+	    background-repeat: no-repeat !important ;
+	    background-position:  center !important ; 
+	}
+	/*-- profile page --*/
+	.profile-contain{
+	  width:100%;
+	  background: #fff;
+	  overflow: auto;
+	}
+	.profile-Image{
+	  float: left;
+	}
+	.profile-box-right{
+	  width: calc(100% - 40px);
+	  float: left;
+	  padding: 20px;
+	}
+	#container{
+	   position: absolute;
+	   left: 0%;
+	   top: 5%;
+	   width: 100%;
+	}
+	.form-main {
+		width: 95%;
+	}
+	.button{
+	  width: 48% !important;
+	}
+	.mLeft{
+	   float:left;
+	}
+	.loginBar{
+		width:100%;
+		height: 44px;
+		background: #2e3e50;
+		text-align: center;
+		color:#fff;
+		font-size: 12pt;
+		font-weight: bold;
+		line-height: 26px;
+		margin: 0;
+		padding: 16px 0px 0px 0px;
+	}
+	.post-image-holder h1{
+		font-size: 12pt;
+		width:50%;
+	}
+	.overflow{
+		overflow: hidden;
+		height: 1%;
+		padding-bottom: 10px;
+	}
+   
+}
+
+
+

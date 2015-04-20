@@ -29,6 +29,11 @@ class Validate{
 								$this->addError("{$item} must be a maximum of {$rule_value} characters");
 							}
 							break;
+						case 'email':
+							if(!filter_var($value, FILTER_VALIDATE_EMAIL) === $rule_value){
+								$this->addError("{$item} is not a valid email address");
+							}
+							break;
 						case 'matches':
 							if($value != $source[$rule_value]){
 								$this->addError("{$rule_value} must match {$item}");

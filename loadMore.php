@@ -2,54 +2,49 @@
 require_once 'core/init.php';
 $user = new User();
 $data = $user->data();
+if($user->hasPermission('banned')){
+	 exit("you are banned");
+}
+
 if(!$user->isLoggedIn()){
 	Redirect::to('index.php');
 	exit("you are not logged in");
 }
 
-if(!$order = Input::get('order')){
-	exit("Nothing to vote!");
-}else{
-
-if($order == "id"){
-	$posts = DB::getInstance()->query("SELECT * FROM posts WHERE public = ? ORDER BY timeStamp ASC LIMIT 10", array(1)); 
-}else if($order == "timeStamp"){
-	$posts = DB::getInstance()->query("SELECT * FROM posts WHERE public = ? ORDER BY timeStamp DESC LIMIT 10", array(1)); 
-}else {
-	$posts = DB::getInstance()->query("SELECT * FROM posts WHERE public = 1 ORDER BY like_count DESC LIMIT 10", array()); 
+if(!$offset = Input::get('count')){
+	exit("ERROR Sorry sothing went wrong!");
+}else if(!$postID = Input::get('post')){
+	exit("ERROR Sorry sothing went wrong!");
 }
+$comments = DB::getInstance()->query("SELECT * FROM comments WHERE postID = ? LIMIT ?,5", array($postID,$offset) ); 
 
-$results = $posts->results();
+if($comments->count() < 5){
+	echo "<div style='display:none'>LASTROW</div>";
+}
+$comments = $comments->results();
 
 
 
-if (!$posts->count()){ // row count 
-	echo 'no posts';
-	exit();
-}else{
-	foreach ($results as $post) {
-		$like = DB::getInstance()->query("SELECT * FROM likes WHERE postID = ? AND userID = ?", array($post->id, $data->id))->results(); 
-		if (!$like[0]->userID == $data->id){
-			$vote = "nun";
-			$image = "background-image: url('images/up.png')";
-		}else{
-			$vote = "down";
-			$image = "background-image: url('images/down.png')";
-		}
-		$id = $post->id;
-		$likeCount = $post->like_count;
+foreach ($comments as $comment) {
 ?>
-		<li>
-			<a href="viewPost.php?post=<?php echo escape($post->id); ?>"><?php echo escape($post->title); ?></a>
-			<?php echo escape($post->timeStamp); ?>
-			<br> By <a href="profile.php?user=<?php echo escape($post->username); ?>"><?php echo escape($post->username); ?></a>
-			Gender = <?php echo escape($post->gender);  ?></br>
-			<div class="upVote" style="<?php echo $image; ?>" data-vote="<?php echo $vote; ?>" data-action="upVote.php" data-like="<?php echo escape($post->like_count);  ?>" data-post="<?php echo escape($post->id); ?>"> votes <?php echo escape($post->like_count);  ?> <img class="up"></div>  
-		</li>
-<?php
-	}
+	<div class="comment-content">
+		<div class="commentImage">
+			<img onError="this.src = 'images/profile/small-default-profile-pic.png'" src="images/profile/small-<?php echo escape($comment->userId); ?>-<?php echo escape($comment->username); ?>.jpg">
+		</div>
+		<div class="comment-right">
+			<div class="CommentHolder">
+				<?php echo escape($comment->comment); ?>
+			</div>	
 
+			<div class="timeHolder">
+				<img style="margin-right:5px;" src="<?php echo escape($comment->gender); ?>">By <a class="none blue" href="profile.php?user=<?php echo escape($comment->username); ?>"><?php echo escape($comment->username); ?></a>
+				<span class="textGreen">Submitted On</span>
+				<span style="font-size: 10pt; color:#58585d;"><?php echo escape($comment->timeStamp); ?></span>
+			</div>
+		</div>
+	</div>
+<?php
 }
-}
+
 
 

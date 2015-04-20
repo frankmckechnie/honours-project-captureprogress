@@ -1,10 +1,10 @@
 <?php
 class User{
-    private $_db,
-            $_data,
-            $_sessionName,
+	private $_db,
+			$_data,
+			$_sessionName,
             $_cookieName,
-            $_isLoggedIn;
+			$_isLoggedIn;
 
     public function __construct($user = null) {
         $this->_db = DB::getInstance();
@@ -12,19 +12,19 @@ class User{
         $this->_cookieName = Config::get('remember/cookie_name');
 
         if(!$user){
-            if(Session::exists($this->_sessionName)){
-                $user = Session::get($this->_sessionName);
+        	if(Session::exists($this->_sessionName)){
+        		$user = Session::get($this->_sessionName);
 
-                if($this->find($user)){
-                    $this->_isLoggedIn = true;
-                } else {
-                     $this->logout();
-                }
-            }
+        		if($this->find($user)){
+        			$this->_isLoggedIn = true;
+        		} else {
+        			 $this->logout();
+        		}
+        	}
         }else {
-            $this->find($user);
+        	$this->find($user);
         }
-    }
+	}
 
     public function update($fields = array(), $id = null){
 
@@ -44,16 +44,16 @@ class User{
     }
 
     public function find($user = null){
-        if($user){
-            $field = (is_numeric($user)) ? 'id' : 'username';
-            $data = $this->_db->get('users', array($field, '=', $user));
+    	if($user){
+    		$field = (is_numeric($user)) ? 'id' : 'username';
+    		$data = $this->_db->get('users', array($field, '=', $user));
 
-            if($data->count()){
-                $this->_data = $data->first();
-                return true; 
-            }
-        }
-        return false;
+    		if($data->count()){
+    			$this->_data = $data->first();
+    			return true; 
+    		}
+    	}
+    	return false;
     }
 
     public function login($username = null, $password = null, $remember = false){
@@ -62,9 +62,14 @@ class User{
             Session::put($this->_sessionName, $this->data()->id);
         }else{
             $user = $this->find($username);   
-            if($user){
-                if($this->data()->password === Hash::make($password, $this->data()->salt)){
-                    Session::put($this->_sessionName, $this->data()->id);
+        	if($user){
+        		if($this->data()->password === Hash::make($password, $this->data()->salt)){
+
+                    if($this->data()->verify != 1){
+                        return false;
+                    }
+                                     
+        			Session::put($this->_sessionName, $this->data()->id);
 
                     if($remember){
                         $hash = Hash::unique();
@@ -84,8 +89,8 @@ class User{
 
                     }
 
-                    return true;
-                }
+        			return true;
+        		}
             }
         }
         return false; 
@@ -93,15 +98,14 @@ class User{
 
     public function hasPermission($key){
         $group = $this->_db->get('groups', array('id', '=', $this->data()->group));
-
         if($group->count()){
             $permissions = json_decode($group->first()->permissions, true);
-            
+
             if($permissions[$key] == true){
                 return true;
             }
-
         }
+        return false;
     }
 
     public function exists(){
@@ -117,12 +121,12 @@ class User{
     }
 
     public function data(){
-        return $this->_data;
+    	return $this->_data;
     }
 
-    public function isLoggedIn(){   
-    // add in here 
-        return $this->_isLoggedIn;
+    public function isLoggedIn(){	
+	// add in here 
+    	return $this->_isLoggedIn;
     }
 
 }

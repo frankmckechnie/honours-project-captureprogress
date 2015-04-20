@@ -17,6 +17,9 @@ function ImageVal($files){
     $imageError = array();
     if ($_FILES[$files]) {
         $file_ary = reArrayFiles($_FILES['userfile']);
+        if ($file_ary[0]['name'] == null){
+            array_push($imageError ," you have to upload an image!");
+        }
         foreach ($file_ary as $file) {
             if($file['tmp_name'] != null){
                 $imageFileType = pathinfo($file['name'],PATHINFO_EXTENSION);

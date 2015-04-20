@@ -1,6 +1,10 @@
 <?php
 require_once 'core/init.php';
 $user = new User();
+if($user->hasPermission('banned')){
+	 exit("you are banned");
+}
+
 if(!$user->isLoggedIn()){
 	Redirect::to('index.php');
 }

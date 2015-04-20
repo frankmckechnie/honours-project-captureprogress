@@ -1,6 +1,10 @@
 <?php
 require_once 'core/init.php';
 $user = new User();
+
+if($user->hasPermission('banned')){
+	 exit("you are banned");
+}
 if(!$user->isLoggedIn()){
 	Redirect::to('index.php');
 	exit("you are not logged in");
@@ -17,6 +21,14 @@ if(Input::exists()){
 			),	
 			'titleOne' => array(
 				'required' => true,
+				'min' => 5,
+				'max' => 60
+			),
+			'titleTwo' => array(
+				'min' => 5,
+				'max' => 60
+			),
+			'titleThree' => array(
 				'min' => 5,
 				'max' => 60
 			)
@@ -62,7 +74,7 @@ if(Input::exists()){
 								    	$filename = $target_dir. "small-".$post->id . "-" . $uniq  . "." . end($ext);
 								    	$filePath = $post->id . "-" . $uniq  . "." . end($ext); 
 									    $image = new SimpleImage($file['tmp_name']);
-									    $image->resizeToWidth(620);
+									    $image->resizeToWidth(640);
 									    if ($image->save($target_file)) {
 									    	$image->resize(60,60);
 									    	$image->save($filename);
@@ -108,5 +120,6 @@ if(Input::exists()){
 			}
 		}
 // }
+}else{
+echo "sorry there was no input";
 }
-

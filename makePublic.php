@@ -1,11 +1,18 @@
 <?php
 require_once 'core/init.php';
 $user = new User();
+if($user->hasPermission('banned')){
+	 exit("you are banned");
+}
 $data = $user->data();
 
 if(!$user->isLoggedIn()){
 	Redirect::to('index.php');
 	exit("you are not logged in");
+}
+
+if(!$option = Input::get('option')){
+	$option = 0;
 }
 
 if(!$postId = Input::get('post')){
@@ -24,7 +31,7 @@ if(!$postId = Input::get('post')){
 		}
 	}
 
-	if(!DB::getInstance()->update('posts',$postId,array('public' => 1))){
+	if(!DB::getInstance()->update('posts',$postId,array('public' => $option))){
 		Session::flash('userMessage', 'Sorry we could not change that');
 		Redirect::to('index.php');
 		exit("Sorry we could not change that post!");

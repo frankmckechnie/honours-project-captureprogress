@@ -1,5 +1,4 @@
 <?php
-
 class Redirect{
 	public static function to($location = null){
 		if($location){
@@ -12,7 +11,8 @@ class Redirect{
 						break;
 				}
 			}
-			header('Location: ' . $location);
+			//header('Location:' . $location);
+			echo("<script>window.location.href = '$location';</script>");
 			exit();
 		}
 	}
