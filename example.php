@@ -29,3 +29,7 @@ $userInsert = DB::getInstance()->update('users', 8, array(
 	print_r($this->_data);
 
 		$data = $this->_db->get('users', array($field, '=', $user));
+
+
+
+		echo "this is the new code yolo";
